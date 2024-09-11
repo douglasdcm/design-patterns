@@ -1,4 +1,4 @@
-# State
+# State is the interface to be implemented by its subclasses
 class TCPState:
     def change_state(self, tcp_connection, state):
         return tcp_connection.change_state(state)
@@ -10,21 +10,22 @@ class TCPState:
         pass
 
 
-# ConcretStateA
+# This ia a ConcretState which implemts the function "active_state"
 class TCPClose(TCPState):
     def active_open(self, tcp_connection):
         # send SYN, receive SYN, ACK, etc. Executes a specific job
         self.change_state(tcp_connection, TCPActiveOpen())
 
 
-# ConcretStateB
+# Same as TCPClose
 class TCPActiveOpen(TCPState):
     def close(self, tcp_connection):
         # send FYN, receive ACk from FYN, etc. Executes a specific job
         return self.change_state(tcp_connection, TCPClose())
 
 
-# Connection
+# Connection is the classes used by the client. It delegates the specific job to subclassed
+# of State interface
 class TCPConnection:
     def __init__(self) -> None:
         self._state: TCPState = TCPClose()
