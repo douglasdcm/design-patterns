@@ -1,4 +1,4 @@
-# Interface. THe Leaf classes don't need to implement the "add", "remove" because they are
+# Interface. Tee Leaf classes don't need to implement the "add", "remove" because they are
 # part of the Composite class
 # Grafic is the Component
 class Grafic:
@@ -38,9 +38,9 @@ class Picture(Grafic):
     grafics: list[Grafic] = []
 
     def draw(self):
-        # Not part of the original code. Added to enable the inpection in tests
+        # Not part of the original code. Added to enable the inspection in tests
         result = []
-        # Excutes the function for its children
+        # Executes the function for its children
         for g in self.grafics:
             r = g.draw()
             result.append(r)  # added for inspection
