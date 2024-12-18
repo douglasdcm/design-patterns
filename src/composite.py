@@ -1,4 +1,4 @@
-# Interface. Tee Leaf classes don't need to implement the "add", "remove" because they are
+# Interface. Tee Leaf classes don't need to implement the "add" or "remove", because they are
 # part of the Composite class
 # Grafic is the Component
 class Grafic:
